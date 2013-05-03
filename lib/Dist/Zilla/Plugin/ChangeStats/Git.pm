@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::Plugin::ChangeStats::Git::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::Plugin::ChangeStats::Git::VERSION = '0.2.0';
+  $Dist::Zilla::Plugin::ChangeStats::Git::VERSION = '0.2.1';
 }
 # ABSTRACT: add code churn statistics to the changelog
 
@@ -81,12 +81,17 @@ sub after_release {
       next_token => qr/{{\$NEXT}}/ 
   ); 
 
-  my ( $next ) = reverse $changes->releases;
+  for my $next ( reverse $changes->releases ) {
+    next if $next->version =~ /NEXT/;
 
-  $next->add_changes( { group => $self->group  }, $self->stats );
+    $next->add_changes( { group => $self->group  }, $self->stats );
 
-  # and finally rewrite the changelog on disk
-  path($self->zilla->changelog_name)->spew($changes->serialize);
+    # and finally rewrite the changelog on disk
+    path($self->zilla->changelog_name)->spew($changes->serialize);
+
+    return;
+  }
+
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -104,7 +109,7 @@ Dist::Zilla::Plugin::ChangeStats::Git - add code churn statistics to the changel
 
 =head1 VERSION
 
-version 0.2.0
+version 0.2.1
 
 =head1 SYNOPSIS
 

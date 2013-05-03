@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::Role::Author::YANICK::Changelog::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::Role::Author::YANICK::Changelog::VERSION = '0.2.0';
+  $Dist::Zilla::Role::Author::YANICK::Changelog::VERSION = '0.2.1';
 }
 # ABSTRACT: provides an accessor for the changelog
 
@@ -56,7 +56,7 @@ Dist::Zilla::Role::Author::YANICK::Changelog - provides an accessor for the chan
 
 =head1 VERSION
 
-version 0.2.0
+version 0.2.1
 
 =head1 SYNOPSIS
 

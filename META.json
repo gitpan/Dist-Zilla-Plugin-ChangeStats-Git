@@ -60,15 +60,15 @@
    "provides" : {
       "Dist::Zilla::Plugin::ChangeStats::Git" : {
          "file" : "lib/Dist/Zilla/Plugin/ChangeStats/Git.pm",
-         "version" : "v0.2.0"
+         "version" : "v0.2.1"
       },
       "Dist::Zilla::Role::Author::YANICK::Changelog" : {
          "file" : "lib/Dist/Zilla/Role/Author/YANICK/Changelog.pm",
-         "version" : "v0.2.0"
+         "version" : "v0.2.1"
       },
       "Dist::Zilla::Role::Author::YANICK::RequireZillaRole" : {
          "file" : "lib/Dist/Zilla/Role/Author/YANICK/RequireZillaRole.pm",
-         "version" : "v0.2.0"
+         "version" : "v0.2.1"
       }
    },
    "release_status" : "stable",
@@ -84,7 +84,7 @@
          "web" : "https://github.com/yanick/Dist-Zilla-Plugin-ChangeStats-Git"
       }
    },
-   "version" : "0.2.0",
+   "version" : "0.2.1",
    "x_author_pledge" : {
       "version" : 1
    },
