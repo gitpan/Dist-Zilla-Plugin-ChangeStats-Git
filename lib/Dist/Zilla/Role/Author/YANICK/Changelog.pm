@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::Role::Author::YANICK::Changelog::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::Role::Author::YANICK::Changelog::VERSION = '0.1.3';
+  $Dist::Zilla::Role::Author::YANICK::Changelog::VERSION = '0.2.0';
 }
 # ABSTRACT: provides an accessor for the changelog
 
@@ -46,7 +46,7 @@ sub save_changelog {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -56,7 +56,7 @@ Dist::Zilla::Role::Author::YANICK::Changelog - provides an accessor for the chan
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 SYNOPSIS
 
@@ -119,7 +119,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

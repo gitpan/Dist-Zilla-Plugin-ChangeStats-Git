@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::Plugin::ChangeStats::Git::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::Plugin::ChangeStats::Git::VERSION = '0.1.3';
+  $Dist::Zilla::Plugin::ChangeStats::Git::VERSION = '0.2.0';
 }
 # ABSTRACT: add code churn statistics to the changelog
 
@@ -14,12 +14,14 @@ use warnings;
 use CPAN::Changes 0.17;
 use Perl::Version;
 use Git::Repository;
+use Path::Tiny;
 
 use Moose;
 
 with qw/
     Dist::Zilla::Role::Plugin
     Dist::Zilla::Role::FileMunger
+    Dist::Zilla::Role::AfterRelease
 /;
 
 with 'Dist::Zilla::Role::Author::YANICK::RequireZillaRole' => {
@@ -41,22 +43,50 @@ has group => (
     default => '',
 );
 
+has stats => (
+    is => 'ro',
+    lazy => 1,
+    default => sub {
+        my $self = shift;
+        
+        my @output = $self->repo->run( 'diff', '--stat', 'releases...master' );
+
+        # actually, only the last line is interesting
+        my $stats = "code churn: " . $output[-1];
+        $stats =~ s/\s+/ /g;
+
+        return $stats;
+  } 
+);
+
 sub munge_files {
   my ($self) = @_;
 
-  my @output = $self->repo->run( 'diff', '--stat', 'releases...master' );
-
-  # actually, only the last line is interesting
-  my $stats = "code churn: " . $output[-1];
-  $stats =~ s/\s+/ /g;
 
   my $changelog = $self->zilla->changelog;
 
   my ( $next ) = reverse $changelog->releases;
 
-  $next->add_changes( { group => $self->group  }, $stats );
+  $next->add_changes( { group => $self->group  }, $self->stats );
 
   $self->zilla->save_changelog($changelog);
+
+}
+
+sub after_release {
+  my $self = shift;
+
+  my $changes = CPAN::Changes->load( 
+      $self->zilla->changelog_name,
+      next_token => qr/{{\$NEXT}}/ 
+  ); 
+
+  my ( $next ) = reverse $changes->releases;
+
+  $next->add_changes( { group => $self->group  }, $self->stats );
+
+  # and finally rewrite the changelog on disk
+  path($self->zilla->changelog_name)->spew($changes->serialize);
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -65,6 +95,7 @@ no Moose;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -73,7 +104,7 @@ Dist::Zilla::Plugin::ChangeStats::Git - add code churn statistics to the changel
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 SYNOPSIS
 
@@ -107,4 +138,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

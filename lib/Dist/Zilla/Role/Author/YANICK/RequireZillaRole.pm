@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::Role::Author::YANICK::RequireZillaRole::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::Role::Author::YANICK::RequireZillaRole::VERSION = '0.1.3';
+  $Dist::Zilla::Role::Author::YANICK::RequireZillaRole::VERSION = '0.2.0';
 }
 
 use strict;
@@ -50,6 +50,7 @@ role {
 }
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -58,7 +59,7 @@ Dist::Zilla::Role::Author::YANICK::RequireZillaRole
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 AUTHOR
 
@@ -72,4 +73,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
