@@ -3,7 +3,7 @@ NAME
     changelog
 
 VERSION
-    version 0.2.1
+    version 0.3.0
 
 SYNOPSIS
         In the dist.ini:
@@ -20,6 +20,12 @@ DESCRIPTION
 ARGUMENTS
   group
     If given, the line is added to the specified group.
+
+  develop_branch
+    The master developing branch. Defaults to *master*.
+
+  release_branch
+    The branch recording the releases. Defaults to *releases*.
 
 AUTHOR
     Yanick Champoux <yanick@babyl.dyndns.org>

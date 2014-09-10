@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::ChangeStats::Git - add code churn statistics to the changel
 
 # VERSION
 
-version 0.2.1
+version 0.3.0
 
 # SYNOPSIS
 
@@ -25,6 +25,14 @@ code churn since the last release, which will look like:
 ## group
 
 If given, the line is added to the specified group.
+
+## develop\_branch
+
+The master developing branch. Defaults to _master_.
+
+## release\_branch
+
+The branch recording the releases. Defaults to _releases_.
 
 # AUTHOR
 

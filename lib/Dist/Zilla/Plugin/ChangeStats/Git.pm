@@ -2,11 +2,8 @@ package Dist::Zilla::Plugin::ChangeStats::Git;
 BEGIN {
   $Dist::Zilla::Plugin::ChangeStats::Git::AUTHORITY = 'cpan:YANICK';
 }
-{
-  $Dist::Zilla::Plugin::ChangeStats::Git::VERSION = '0.2.1';
-}
 # ABSTRACT: add code churn statistics to the changelog
-
+$Dist::Zilla::Plugin::ChangeStats::Git::VERSION = '0.3.0';
 
 use strict;
 use warnings;
@@ -38,6 +35,18 @@ has change_file => (
     default => 'Changes',
 );
 
+has "develop_branch" => (
+    isa => 'Str',
+    is => 'ro',
+    default => 'master'
+);
+
+has "release_branch" => (
+    isa => 'Str',
+    is => 'ro',
+    default => 'releases'
+);
+
 has group => (
     is => 'ro',
     default => '',
@@ -49,7 +58,9 @@ has stats => (
     default => sub {
         my $self = shift;
         
-        my @output = $self->repo->run( 'diff', '--stat', 'releases...master' );
+        my @output = $self->repo->run( 'diff', '--stat',
+            join '...', $self->release_branch, $self->develop_branch
+        );
 
         # actually, only the last line is interesting
         my $stats = "code churn: " . $output[-1];
@@ -61,7 +72,6 @@ has stats => (
 
 sub munge_files {
   my ($self) = @_;
-
 
   my $changelog = $self->zilla->changelog;
 
@@ -103,13 +113,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Plugin::ChangeStats::Git - add code churn statistics to the changelog
 
 =head1 VERSION
 
-version 0.2.1
+version 0.3.0
 
 =head1 SYNOPSIS
 
@@ -130,6 +142,14 @@ code churn since the last release, which will look like:
 =head2 group
 
 If given, the line is added to the specified group.
+
+=head2 develop_branch
+
+The master developing branch. Defaults to I<master>.
+
+=head2 release_branch
+
+The branch recording the releases. Defaults to I<releases>.
 
 =head1 AUTHOR
 

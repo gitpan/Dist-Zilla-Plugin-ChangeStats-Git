@@ -2,11 +2,8 @@ package Dist::Zilla::Role::Author::YANICK::Changelog;
 BEGIN {
   $Dist::Zilla::Role::Author::YANICK::Changelog::AUTHORITY = 'cpan:YANICK';
 }
-{
-  $Dist::Zilla::Role::Author::YANICK::Changelog::VERSION = '0.2.1';
-}
 # ABSTRACT: provides an accessor for the changelog
-
+$Dist::Zilla::Role::Author::YANICK::Changelog::VERSION = '0.3.0';
 use strict;
 use warnings;
 
@@ -50,13 +47,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Role::Author::YANICK::Changelog - provides an accessor for the changelog
 
 =head1 VERSION
 
-version 0.2.1
+version 0.3.0
 
 =head1 SYNOPSIS
 

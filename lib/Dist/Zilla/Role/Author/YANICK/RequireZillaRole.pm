@@ -2,10 +2,7 @@ package Dist::Zilla::Role::Author::YANICK::RequireZillaRole;
 BEGIN {
   $Dist::Zilla::Role::Author::YANICK::RequireZillaRole::AUTHORITY = 'cpan:YANICK';
 }
-{
-  $Dist::Zilla::Role::Author::YANICK::RequireZillaRole::VERSION = '0.2.1';
-}
-
+$Dist::Zilla::Role::Author::YANICK::RequireZillaRole::VERSION = '0.3.0';
 use strict;
 use warnings;
 
@@ -53,13 +50,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Role::Author::YANICK::RequireZillaRole
 
 =head1 VERSION
 
-version 0.2.1
+version 0.3.0
 
 =head1 AUTHOR
 

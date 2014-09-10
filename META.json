@@ -4,7 +4,7 @@
       "Yanick Champoux <yanick@babyl.dyndns.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.140640",
    "license" : [
       "perl_5"
    ],
@@ -16,12 +16,12 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Module::Build" : "0.3601"
+            "Module::Build" : "0.28"
          }
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.3601"
+            "Module::Build" : "0.28"
          }
       },
       "develop" : {
@@ -50,32 +50,33 @@
       },
       "test" : {
          "requires" : {
-            "File::Find" : "0",
-            "File::Temp" : "0",
+            "File::Spec" : "0",
+            "IO::Handle" : "0",
+            "IPC::Open3" : "0",
             "Test::DZil" : "0",
-            "Test::More" : "0.88"
+            "Test::More" : "0.88",
+            "perl" : "5.006"
          }
       }
    },
    "provides" : {
       "Dist::Zilla::Plugin::ChangeStats::Git" : {
          "file" : "lib/Dist/Zilla/Plugin/ChangeStats/Git.pm",
-         "version" : "v0.2.1"
+         "version" : "v0.3.0"
       },
       "Dist::Zilla::Role::Author::YANICK::Changelog" : {
          "file" : "lib/Dist/Zilla/Role/Author/YANICK/Changelog.pm",
-         "version" : "v0.2.1"
+         "version" : "v0.3.0"
       },
       "Dist::Zilla::Role::Author::YANICK::RequireZillaRole" : {
          "file" : "lib/Dist/Zilla/Role/Author/YANICK/RequireZillaRole.pm",
-         "version" : "v0.2.1"
+         "version" : "v0.3.0"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "mailto" : "bug-dist-zilla-plugin-changestats-git at rt.cpan.org",
-         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-ChangeStats-Git"
+         "web" : "https://github.com/yanick/Dist-Zilla-Plugin-ChangeStats-Git/issues"
       },
       "homepage" : "http://search.cpan.org/dist/Dist-Zilla-Plugin-ChangeStats-Git/",
       "repository" : {
@@ -84,7 +85,7 @@
          "web" : "https://github.com/yanick/Dist-Zilla-Plugin-ChangeStats-Git"
       }
    },
-   "version" : "0.2.1",
+   "version" : "0.3.0",
    "x_author_pledge" : {
       "version" : 1
    },
